@@ -1,0 +1,640 @@
+// Name = Tharun Krishna Thota
+// Class = CS 341
+// Student Id = 31256661
+
+
+
+
+import java.util.ArrayList; // importing ArrayList
+import java.util.Scanner;
+
+public class p1_15s_tkt6 {
+
+	public static void main(String[] args) {
+		ArrayList<String>band = new ArrayList<String>(); // ArrayList Data Structure
+
+		String another = "y";
+		Scanner scaner = new Scanner (System.in); // To read input 
+		
+		
+				 
+		Scanner scan = new Scanner(System.in);
+			String read = scan.nextLine();
+			String sok = read;
+			System.out.print("User Input : ");
+			System.out.println(sok);
+			int len = sok.length();
+			int position = 0;
+			int poss;
+			System.out.print("q1");// State in Dfa figure
+			System.out.print("-----");
+			System.out.println(sok.charAt(position));
+			while(position < len) // To check if the string exceed it length
+			{
+				//char letter = read.charAt(position);
+				
+				if(sok.charAt(position) == 'w') // to check the characters at specified position
+				{
+					System.out.print("q2"); // State in DFA figure
+					System.out.print("-----");
+					System.out.println(sok.charAt(position));
+					position++; // to increase the counter position 
+					if(sok.charAt(position) == 'w')// to check the characters at specified position
+					{
+						System.out.print("q3");
+						System.out.print("-----");
+						System.out.println(sok.charAt(position));
+						position++;
+						if(sok.charAt(position) == 'w')// to check the characters at specified position
+						{
+							System.out.print("q4");
+							System.out.print("-----");
+							System.out.println(sok.charAt(position));
+							position++;
+							if(sok.charAt(position) == 'w')
+							{
+								System.out.println("REJECTED");
+								System.exit(0);
+							}
+							if(sok.charAt(position) == '.')// to check the characters at specified position
+							{
+								System.out.print("q5");
+								System.out.print("-----");
+								System.out.println(sok.charAt(position));
+								position++;
+								if(sok.charAt(position) == '.')
+								{
+									System.out.println("REJECTED");
+									System.exit(0);
+								}
+								if(sok.charAt(position) == 'c')// to check the characters at specified position
+								{
+									System.out.print("q6");
+									System.out.print("-----");
+									System.out.println(sok.charAt(position));
+									position++;
+									if(sok.charAt(position)== 'o')// to check the characters at specified position
+									{
+										System.out.print("q7");
+										System.out.print("-----");
+										System.out.println(sok.charAt(position));
+										position++;
+										if(sok.charAt(position) == 'm')// to check the characters at specified position
+											
+										{
+											System.out.print("q8");
+											System.out.print("-----");
+											System.out.println(sok.charAt(position));
+											position++;
+											
+										}
+										else // If the above if false, then these statements execute
+										{
+
+											if(( sok.charAt(position) >= 'a' && sok.charAt(position) <= 'n') || (sok.charAt(position) >= 'p' && sok.charAt(position) <= 'z') 
+													||(sok.charAt(position) == '.'))
+											{
+												if(sok.charAt(position) == '.')
+												{
+													System.out.print("q10");
+													System.out.print("-----");
+													System.out.println(sok.charAt(position));
+													position++;
+													if(sok.charAt(position) == 'c')
+													{
+														System.out.print("q11");
+														System.out.print("-----");
+														System.out.println(sok.charAt(position));
+														position++;
+														if(sok.charAt(position) == 'o')
+														{
+															System.out.print("q12");
+															System.out.print("-----");
+															System.out.println(sok.charAt(position));
+															position++;
+															
+															if(sok.charAt(position) == '.')
+															{
+																System.out.print("q14");
+																System.out.print("-----");
+																System.out.println(sok.charAt(position));
+																position++;
+																
+																if(sok.charAt(position) == 'j')
+																{
+																	System.out.print("q15");
+																	System.out.print("-----");
+																	System.out.println(sok.charAt(position));
+																	position++;
+																	
+																	if(sok.charAt(position) == 'p')
+																	{
+																		System.out.print("q16");
+																		System.out.print("-----");
+																		System.out.println(sok.charAt(position));
+																		position++;
+																		band.add("Success");
+																	}
+																	
+																	
+																}
+																
+																
+															}
+															else
+															{
+															
+															if(sok.charAt(position) == 'm')
+															{
+																System.out.print("q13");
+																System.out.print("-----");
+																System.out.println(sok.charAt(position));
+																position++;
+																band.add("Success");
+																
+															}
+															else
+															{
+																System.out.println("REJECTED");
+																System.exit(0);
+															}
+															}
+														}
+													}
+												}
+												else
+												{
+													System.out.print("q9");
+													System.out.print("-----");
+													System.out.println(sok.charAt(position));
+													position++;
+												}
+											}
+										}
+									}
+									else
+									{
+										if(( sok.charAt(position) >= 'a' && sok.charAt(position) <= 'n') || (sok.charAt(position) >= 'p' && sok.charAt(position) <= 'z') 
+												||(sok.charAt(position) == '.'))
+										{
+											if(sok.charAt(position) == '.')
+											{
+												System.out.print("q10");
+												System.out.print("-----");
+												System.out.println(sok.charAt(position));
+												position++;
+												if(sok.charAt(position) == 'c')
+												{
+													System.out.print("q11");
+													System.out.print("-----");
+													System.out.println(sok.charAt(position));
+													position++;
+													if(sok.charAt(position) == 'o')
+													{
+														System.out.print("q12");
+														System.out.print("-----");
+														System.out.println(sok.charAt(position));
+														position++;
+														
+														if(sok.charAt(position) == '.')
+														{
+															System.out.print("q14");
+															System.out.print("-----");
+															System.out.println(sok.charAt(position));
+															position++;
+															
+															if(sok.charAt(position) == 'j')
+															{
+																System.out.print("q15");
+																System.out.print("-----");
+																System.out.println(sok.charAt(position));
+																position++;
+																
+																if(sok.charAt(position) == 'p')
+																{
+																	System.out.print("q16");
+																	System.out.print("-----");
+																	System.out.println(sok.charAt(position));
+																	position++;
+																	band.add("Success");
+																}
+																
+																
+															}
+															
+															
+														}
+														else
+														{
+														if(sok.charAt(position) == 'm')
+														{
+															System.out.print("q13");
+															System.out.print("-----");
+															System.out.println(sok.charAt(position));
+															position++;
+															band.add("Success");
+															
+														}
+														else
+														{
+															System.out.println("REJECTED");
+															System.exit(0);
+														}
+														}
+													}
+												}
+											}
+											else
+											{
+												System.out.print("q9");
+												System.out.print("-----");
+												System.out.println(sok.charAt(position));
+												position++;
+											}
+										}
+									}
+								}
+								else
+								{
+									if(( sok.charAt(position) >= 'a' && sok.charAt(position) <= 'b') || (sok.charAt(position) >= 'd' && sok.charAt(position) <= 'z') 
+											||(sok.charAt(position) == '.'))
+									{
+										if(sok.charAt(position) == '.')
+										{
+											System.out.print("q5");
+											System.out.print("-----");
+											System.out.println(sok.charAt(position));
+											position++;
+											if(sok.charAt(position) == 'c')
+											{
+												System.out.print("q6");
+												System.out.print("-----");
+												System.out.println(sok.charAt(position));
+												position++;
+												if(sok.charAt(position) == 'o')
+												{
+													System.out.print("q7");
+													System.out.print("-----");
+													System.out.println(sok.charAt(position));
+													position++;
+													
+													if(sok.charAt(position) == '.')
+													{
+														System.out.print("q14");
+														System.out.print("-----");
+														System.out.println(sok.charAt(position));
+														position++;
+														
+														if(sok.charAt(position) == 'j')
+														{
+															System.out.print("q15");
+															System.out.print("-----");
+															System.out.println(sok.charAt(position));
+															position++;
+															
+															if(sok.charAt(position) == 'p')
+															{
+																System.out.print("q16");
+																System.out.print("-----");
+																System.out.println(sok.charAt(position));
+																position++;
+																band.add("Success");
+															}
+															
+															
+														}
+														
+														
+													}
+													else
+													{
+													if(sok.charAt(position) == 'm')
+													{
+														System.out.print("q8");
+														System.out.print("-----");
+														System.out.println(sok.charAt(position));
+														position++;
+														band.add("Success");
+														
+													}
+													else
+													{
+														System.out.println("REJECTED");
+														System.exit(0);
+													}
+													}
+												}
+											}
+										}
+										else
+										{
+											System.out.print("q9");
+											System.out.print("-----");
+											System.out.println(sok.charAt(position));
+											position++;
+										}
+									}
+								}
+								
+							}
+							
+						}
+						else
+						{
+							if(( sok.charAt(position) >= 'a' && sok.charAt(position) <= 'v') || (sok.charAt(position) >= 'x' && sok.charAt(position) <= 'z') 
+									||(sok.charAt(position) == '.'))
+								{
+								
+										if(sok.charAt(position) == '.')
+										{
+											System.out.print("q10");
+											System.out.print("-----");
+											System.out.println(sok.charAt(position));
+											position++;
+											if(sok.charAt(position) == 'c')
+											{
+												System.out.print("q11");
+												System.out.print("-----");
+												System.out.println(sok.charAt(position));
+												position++;
+												if(sok.charAt(position) == 'o')
+												{
+													System.out.print("q12");
+													System.out.print("-----");
+													System.out.println(sok.charAt(position));
+													position++;
+													
+													if(sok.charAt(position) == '.')
+													{
+														System.out.print("q14");
+														System.out.print("-----");
+														System.out.println(sok.charAt(position));
+														position++;
+														
+														if(sok.charAt(position) == 'j')
+														{
+															System.out.print("q15");
+															System.out.print("-----");
+															System.out.println(sok.charAt(position));
+															position++;
+															
+															if(sok.charAt(position) == 'p')
+															{
+																System.out.print("q16");
+																System.out.print("-----");
+																System.out.println(sok.charAt(position));
+																position++;
+																band.add("Success");
+															}
+															
+															
+														}
+														
+														
+													}
+													else
+													{
+													if(sok.charAt(position) == 'm')
+													{
+														System.out.print("q13");
+														System.out.print("-----");
+														System.out.println(sok.charAt(position));
+														position++;
+														band.add("Success");
+														
+													}
+													else
+													{
+														System.out.println("REJECTED");
+														System.exit(0);
+													}
+													}
+												}
+											}
+										}
+										else
+										{
+											System.out.print("q9");
+											System.out.print("-----");
+											System.out.println(sok.charAt(position));
+											position++;
+										}
+								}
+						}
+					}
+						
+					else
+					{
+						if(( sok.charAt(position) >= 'a' && sok.charAt(position) <= 'v') || (sok.charAt(position) >= 'x' && sok.charAt(position) <= 'z') 
+							||(sok.charAt(position) == '.'))
+						{
+						
+								if(sok.charAt(position) == '.')
+								{
+									System.out.print("q10");
+									System.out.print("-----");
+									System.out.println(sok.charAt(position));
+									position++;
+									if(sok.charAt(position) == 'c')
+									{
+										System.out.print("q11");
+										System.out.print("-----");
+										System.out.println(sok.charAt(position));
+										position++;
+										if(sok.charAt(position) == 'o')
+										{
+											System.out.print("q12");
+											System.out.print("-----");
+											System.out.println(sok.charAt(position));
+											position++;
+											
+											if(sok.charAt(position) == '.')
+											{
+												System.out.print("q14");
+												System.out.print("-----");
+												System.out.println(sok.charAt(position));
+												position++;
+												
+												if(sok.charAt(position) == 'j')
+												{
+													System.out.print("q15");
+													System.out.print("-----");
+													System.out.println(sok.charAt(position));
+													position++;
+													
+													if(sok.charAt(position) == 'p')
+													{
+														System.out.print("q16");
+														System.out.print("-----");
+														System.out.println(sok.charAt(position));
+														position++;
+														band.add("Success");
+													}
+													
+													
+												}
+												
+												
+											}
+											else
+											{
+											if(sok.charAt(position) == 'm')
+											{
+												System.out.print("q13");
+												System.out.print("-----");
+												System.out.println(sok.charAt(position));
+												position++;
+												band.add("Success");
+												
+											}
+											else
+											{
+												System.out.println("REJECTED");
+												System.exit(0);
+											}
+											}
+										}
+									}
+								}
+								else
+								{
+									System.out.print("q9");
+									System.out.print("-----");
+									System.out.println(sok.charAt(position));
+									position++;
+								}
+						}
+							
+									
+								
+									
+					}
+					
+				}
+				else
+				{
+					if(( sok.charAt(position) >= 'a' && sok.charAt(position) <= 'v') || (sok.charAt(position) >= 'x' && sok.charAt(position) <= 'z') 
+						||(sok.charAt(position) == '.')) 
+						{
+							if(sok.charAt(position) == '.')
+								
+							{
+								System.out.print("q10");
+								System.out.print("-----");
+								System.out.println(sok.charAt(position));
+								position++;
+								if(sok.charAt(position) == 'c')
+								{
+									System.out.print("q11");
+									System.out.print("-----");
+									System.out.println(sok.charAt(position));
+									position++;
+									if(sok.charAt(position) == 'o')
+									{
+										System.out.print("q12");
+										System.out.print("-----");
+										System.out.println(sok.charAt(position));
+										position++;
+										if(position >= len)
+										{
+											System.out.println("REJECTED");
+											System.exit(0);
+										}
+										
+										if(sok.charAt(position) == '.')
+										{
+											System.out.print("q14");
+											System.out.print("-----");
+											System.out.println(sok.charAt(position));
+											position++;
+											
+											if(sok.charAt(position) == 'j')
+											{
+												System.out.print("q15");
+												System.out.print("-----");
+												System.out.println(sok.charAt(position));
+												position++;
+												
+												if(sok.charAt(position) == 'p')
+												{
+													System.out.print("q16");
+													System.out.print("-----");
+													System.out.println(sok.charAt(position));
+													position++;
+													band.add("Success");
+												}
+												
+												
+											}
+											
+											
+										}
+										else
+											
+										{
+											if(sok.charAt(position) == 'm')
+											{
+											System.out.print("q13");
+											System.out.print("-----");
+											System.out.println(sok.charAt(position));
+											position++;
+											band.add("Success");
+											}
+											else
+											{
+												System.out.println("REJECTED");
+												System.exit(0);
+											}
+								
+											
+										}
+										
+									}
+								}
+							}
+							else
+							{
+								System.out.print("q9");
+								System.out.print("-----");
+								System.out.println(sok.charAt(position));
+								position++;
+							}
+						}
+					
+								
+							
+								
+					}
+				}
+			if(band.size() == 2 )
+			{
+				System.out.println("REJECTED");
+			}
+			if(band.size() == 1)
+			{
+				System.out.println("ACCEPCTED");
+			}
+			for (int i = 0; i < band.size(); i++) {
+			    String value = band.get(i);
+			   // System.out.println( value);
+			}
+			
+			
+			
+			
+		
+		
+		
+		}
+		
+		
+			}
+	
+
+
+	
+
+	
+	
+
+

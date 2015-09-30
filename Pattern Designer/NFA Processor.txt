@@ -1,0 +1,234 @@
+//============================================================================
+// Name        : Tharun Krishna, Thota
+// Class       : CS 341 - E-learning
+// Student ID  : 31256661
+// Ucid ID     : tkt6
+//============================================================================
+
+#include <iostream>
+#include <istream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <algorithm>
+#include <cctype>
+#include <fstream>
+#include <map>
+#include <cstring>
+#include <stack>
+using namespace std;
+vector<char> tokens;
+vector<char> tokens2;
+vector<string> states;
+stack<char> list;
+string result = "";
+int jet = 0;
+
+int main()
+{
+	string line = "a" ;
+	while (getline(cin, line))
+	{
+		// If line is not empty
+		if(!line.empty())
+		{
+			result += line;
+		}
+		else
+		{
+			result += "";
+		}
+	}
+	cout << "String : " << result << endl;
+	//cout << result.length() << endl;
+	int len = result.length();
+	tokens.push_back('~');
+	for(int i =0; i < len; i++)
+	{
+		char ch = result.at(i);
+		tokens.push_back(ch);
+		tokens2.push_back(ch);
+	}
+	tokens2.push_back('~');
+	//cout << tokens.at(0) << endl;
+	//cout << tokens.size() << endl;
+	//cout << tokens2.at(tokens.size()-1);
+	int size = tokens2.size();
+	if(size > 0)
+	{
+		cout << "State :" << "S1" << " " << endl;
+		states.push_back("S1");
+	}
+	for(int i = 0; i < size; i++)
+	{
+		if(tokens[i] == '~' && tokens2[i] == '$')
+		{
+			list.push('$');
+			cout << "State :" << "S2"<< ", " << "Push :" << list.top()  << ", " << "Pop :" << "None, " << "Input :" << tokens2[i] << endl;
+			states.push_back("S2");
+
+		}
+		if((tokens[i] == '$') && ((tokens2[i] >= 'a' && tokens2[i] <= 'z')))
+		{
+			cout << "State :" << "S3" << ", " << "Push :" << "None, "  << "Pop :" << "None, "<< "Input :"  << tokens2[i] << endl;
+			states.push_back("S3");
+		}
+		if((tokens[i] == '$') && (((tokens2[i] >= '0' && tokens2[i] <= '9') || (tokens2[i] == '_') ||
+		((tokens2[i] == '+') || (tokens2[i] == '-')|| (tokens2[i] == '*')||(tokens2[i] == '/')))))
+		{
+			cout << "Rejected";
+			exit(0);
+		}
+		if(((tokens[i] >= 'a' && tokens[i] <= 'z') || (tokens[i] >= '0' && tokens[i] <= '9') || (tokens[i] == '_')) &&
+		((tokens2[i] >= 'a' && tokens2[i] <= 'z') || (tokens2[i] >= '0' && tokens2[i] <= '9') || (tokens2[i] == '_')))
+		{
+			cout << "State :" << "S3" << ", "<< "Push :" << "None, "  << "Pop :" << "None, "<< "Input :" << " " << tokens2[i] << endl;
+			states.push_back("S3");
+		}
+		if(((tokens[i] >= 'a' && tokens[i] <= 'z') || (tokens[i] >= '0' && tokens[i] <= '9') || (tokens[i] == '_')) &&
+		(tokens2[i] == '$'))
+		{
+			//char p = list.pop();
+			cout << "State :" << "S7" << ", "<< "Push :" << "None, "  << "Pop :" << "$" << ", "  << "Input :" << " " << tokens2[i] << endl;
+			states.push_back("S7");
+		}
+		if(((tokens[i] >= 'a' && tokens[i] <= 'z') || (tokens[i] >= '0' && tokens[i] <= '9') || (tokens[i] == '_'))&&
+		((tokens2[i] == '+') || (tokens2[i] == '-')|| (tokens2[i] == '*')||(tokens2[i] == '/')))
+		{
+			cout << "State :" << "S4" << ", "<< "Push :" << "None, "  << "Pop :" << "None, "<< "Input :" << " " << tokens2[i] << endl;
+			states.push_back("S4");
+		}
+		if(((tokens[i] == '+') || (tokens[i] == '-')|| (tokens[i] == '*')||(tokens[i] == '/')) &&
+		((tokens2[i] >= 'a' && tokens2[i] <= 'z')))
+		{
+			cout << "State :" << "S3" << ", "<< "Push :" << "None, "  << "Pop :" << "None, "<< "Input :" << " " << tokens2[i] << endl;
+			states.push_back("S3");
+		}
+		if(((tokens[i] == '+') || (tokens[i] == '-')|| (tokens[i] == '*')||(tokens[i] == '/')) &&
+		((tokens2[i] == '+') || (tokens2[i] == '-')|| (tokens2[i] == '*')||(tokens2[i] == '/')))
+		{
+			cout << "Rejected";
+			exit(0);
+		}
+		if(((tokens[i] == '+') || (tokens[i] == '-')|| (tokens[i] == '*')||(tokens[i] == '/')) &&
+		(tokens2[i] == '('))
+		{
+			list.push('(');
+			cout << "State :" << "S2" << ", " << "Push :" << list.top() << ", "  << "Pop :" << "None, "<< "Input :" << " " << tokens2[i] << endl;
+			states.push_back("S2");
+			if(tokens2[i] == '(')
+			{
+				jet++;
+			}
+		}
+		if(((tokens[i] == '+') || (tokens[i] == '-')|| (tokens[i] == '*')||(tokens[i] == '/')) &&
+		((tokens2[i] >= '0' && tokens2[i] <= '9') || (tokens2[i] == '_')))
+		{
+			cout << "Rejected";
+			exit(0);
+		}
+		if((tokens[i] == '$') && (tokens2[i] == '('))
+		{
+			list.push('(');
+			cout << "State :" << "S5" << ", " << "Push :" << list.top() << ", " << "Pop :" << "None, "<< "Input :"<< " " << tokens2[i] << endl;
+			states.push_back("S5");
+			if(tokens2[i] == '(')
+			{
+				jet++;
+			}
+		}
+		if((tokens[i] == '(') && (tokens2[i] == '('))
+		{
+			list.push('(');
+			cout << "State :" << "S5" << ", " << "Push :" << list.top() << ", "  << "Pop :" << "None, "<< "Input :" << " " << tokens2[i] << endl;
+			states.push_back("S5");
+			if(tokens2[i] == '(')
+			{
+				jet++;
+			}
+		}
+		if((tokens[i] == '(') && (tokens2[i] >= 'a' && tokens2[i] <= 'z'))
+		{
+			cout << "State :" << "S3" << ", " << "Push :" << "None, "  << "Pop :" << "None, "<< "Input :" << " " << tokens2[i] << endl;
+			states.push_back("S3");
+		}
+		if(((tokens[i] >= 'a' && tokens[i] <= 'z') || (tokens[i] >= '0' && tokens[i] <= '9') || (tokens[i] == '_')) &&
+		(tokens2[i] == ')'))
+		{
+			if(tokens2[i] == ')')
+			{
+				jet--;
+				if(jet >= 0)
+				{
+					//char p = list.pop();
+					cout << "State :" << "S6" << ", " << "Push :" << "None, "  << "Pop :" << "(" << ", " << "Input :" << " " << tokens2[i] << endl;
+					states.push_back("S6");
+				}
+				else
+				{
+					cout << "Rejected";
+					exit(0);
+				}
+			}
+
+		}
+		if((tokens[i] == ')') && (tokens2[i] == ')'))
+		{
+			if(tokens2[i] == ')')
+			{
+				jet--;
+				if(jet >= 0)
+				{
+					//char p = list.pop();
+					cout << "State :" << "S6" << ", " << "Push :" << "None, "  << "Pop :" << "(" << ", " << "Input :" << " " << tokens2[i] << endl;
+					states.push_back("S6");
+				}
+				else
+				{
+					cout << "Rejected";
+					exit(0);
+				}
+			}
+		}
+		if((tokens[i] == ')') && ((tokens2[i] == '+') || (tokens2[i] == '-')|| (tokens2[i] == '*')||(tokens2[i] == '/')) )
+		{
+			cout << "State: " << "S4" << ", " << "Push :" << "None, "  << "Pop :" << "None, "<< "Input :" << " " << tokens2[i] << endl;
+			states.push_back("S4");
+		}
+		if((tokens[i] == ')') && ((tokens2[i] >= 'a' && tokens2[i] <= 'z') || (tokens2[i] >= '0' && tokens2[i] <= '9') || (tokens2[i] == '_')))
+		{
+			cout << "Rejected";
+			exit(0);
+		}
+		if((tokens[i] == ')') && (tokens2[i] == '$' ))
+		{
+			//char p = list.pop();
+			cout << "State :" << "S7" << ", " << "Push :" << "None, "  << "Pop :" << "$" << ", "<< "Input :" << " " << tokens2[i] << endl;
+			states.push_back("S7");
+
+		}
+		if(((tokens[i] >= 'a' && tokens[i] <= 'z') || (tokens[i] >= '0' && tokens[i] <= '9') || (tokens[i] == '_')) &&
+		(tokens2[i] == '('))
+		{
+			cout << "Rejected";
+			exit(0);
+		}
+		if(((tokens[i] == '+') || (tokens[i] == '-')|| (tokens[i] == '*')||(tokens[i] == '/')) && (tokens2[i] == '$'))
+		{
+			cout << "Rejected";
+			exit(0);
+		}
+
+	}
+	if(states.at(states.size()-1) == "S7")
+	{
+		cout << "Accepted";
+	}
+	else
+	{
+		cout << "Rejected";
+	}
+
+
+}
